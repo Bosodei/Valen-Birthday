@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="An interactive birthday surprise." />
+  <title>For You ♥</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="app">
+    <!-- 1. Passcode -->
+    <section class="screen active" id="screen-passcode">
+      <div class="passcode-layout">
+        <div class="photo-frame">
+          <img src="assets/photo.jpg" alt="Our photo" />
+        </div>
+
+        <div class="passcode-panel">
+          <h1>Enter the passcode</h1>
+          <div class="code-boxes" aria-label="Passcode">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="keypad" id="keypad">
+            <button data-key="1">1</button><button data-key="2">2</button><button data-key="3">3</button>
+            <button data-key="4">4</button><button data-key="5">5</button><button data-key="6">6</button>
+            <button data-key="7">7</button><button data-key="8">8</button><button data-key="9">9</button>
+            <button data-key="*">*</button><button data-key="0">0</button><button data-key="#">#</button>
+          </div>
+          <p class="hint">hint: it's our fav code</p>
+          <button class="main-button hidden" id="unlockButton">NEXT</button>
+          <p class="error" id="codeError"></p>
+        </div>
+      </div>
+      <div class="bear">🧸</div>
+    </section>
+
+    <!-- 2. Gifts -->
+    <section class="screen" id="screen-gifts">
+      <div class="center-content">
+        <h2>Gift for you</h2>
+        <p class="subtitle">click any gift to open</p>
+        <div class="gifts">
+          <button class="gift" data-gift="1" aria-label="Open gift 1"><span>🎁</span></button>
+          <button class="gift" data-gift="2" aria-label="Open gift 2"><span>🎁</span></button>
+          <button class="gift" data-gift="3" aria-label="Open gift 3"><span>🎁</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Wish -->
+    <section class="screen" id="screen-wish">
+      <div class="center-content">
+        <h2>Make a wish</h2>
+        <div class="cake-wrap" id="cake">
+          <div class="flames" id="flames">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <div class="candles">
+            <b></b><b></b><b></b><b></b><b></b><b></b><b></b>
+          </div>
+          <div class="cake-top"></div>
+          <div class="cake-body"></div>
+        </div>
+        <button class="main-button blow" id="blowButton">BLOW</button>
+        <p class="small-note" id="wishMessage"></p>
+      </div>
+    </section>
+
+    <!-- 4. Birthday -->
+    <section class="screen" id="screen-birthday">
+      <div class="center-content birthday-card">
+        <h2>happy birthday<br />my love</h2>
+        <div class="cake-illustration">🎂</div>
+        <button class="main-button" id="birthdayNext">NEXT</button>
+      </div>
+    </section>
+
+    <!-- 5. Final birthday card -->
+    <section class="screen" id="screen-final-card">
+      <div class="final-card">
+        <div class="mini-photos">
+          <img src="assets/photo.jpg" alt="Memory" />
+          <div class="memory">♥</div>
+          <div class="memory memory-two">✦</div>
+          <div class="love-label">LOVE ♥</div>
+        </div>
+
+        <div class="letter">
+          <div class="stamp">♥</div>
+          <div class="speech">LOVE YOU</div>
+          <p id="letterText">
+            You are the calm I never knew I needed and the warmth I always look for.
+            I just want you to know that I'm really happy with you, and I want to keep
+            choosing you every single day. I love you, more than I ever say out loud.
+          </p>
+          <div class="letter-heart">♥</div>
+        </div>
+      </div>
+      <button class="main-button back-button" id="backButton">BACK</button>
+    </section>
+  </main>
+
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+  <script src="script.js"></script>
+</body>
+</html>
