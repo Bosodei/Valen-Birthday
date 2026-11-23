@@ -1,107 +1,381 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="An interactive birthday surprise." />
-  <title>Para ti ♥</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Para ti ♥</title>
+
+    <meta name="description" content="Una sorpresa especial para ti">
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <main id="app">
-    <!-- 1. Passcode -->
-    <section class="screen active" id="screen-passcode">
-      <div class="passcode-layout">
-        <div class="photo-frame">
-          <img src="assets/foto1.jpg" alt="Our photo" />
-        </div>
 
-        <div class="passcode-panel">
-          <h1>Ingresa la contraseña</h1>
-          <div class="code-boxes" aria-label="Passcode">
-            <span></span><span></span><span></span><span></span>
-          </div>
-          <div class="keypad" id="keypad">
-            <button data-key="1">1</button><button data-key="2">2</button><button data-key="3">3</button>
-            <button data-key="4">4</button><button data-key="5">5</button><button data-key="6">6</button>
-            <button data-key="7">7</button><button data-key="8">8</button><button data-key="9">9</button>
-            <button data-key="*">*</button><button data-key="0">0</button><button data-key="#">#</button>
-          </div>
-          <p class="hint">Pista: ¿Que día es hoy?</p>
-          <button class="main-button hidden" id="unlockButton">NEXT</button>
-          <p class="error" id="codeError"></p>
-        </div>
-      </div>
-      <div class="bear">🧸</div>
-    </section>
+    <main id="app">
 
-    <!-- 2. Gifts -->
-    <section class="screen" id="screen-gifts">
-      <div class="center-content">
-        <h2>Gift for you</h2>
-        <p class="subtitle">Abre el regalo que quieras</p>
-        <div class="gifts">
-          <button class="gift" data-gift="1" aria-label="Open gift 1"><span>🎁</span></button>
-          <button class="gift" data-gift="2" aria-label="Open gift 2"><span>🎁</span></button>
-          <button class="gift" data-gift="3" aria-label="Open gift 3"><span>🎁</span></button>
-        </div>
-      </div>
-    </section>
+        <!-- =========================
+             SCREEN 1: PASSCODE
+        ========================== -->
 
-    <!-- 3. Wish -->
-    <section class="screen" id="screen-wish">
-      <div class="center-content">
-        <h2>Pide un deseo</h2>
-        <div class="cake-wrap" id="cake">
-          <div class="flames" id="flames">
-            <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-          </div>
-          <div class="candles">
-            <b></b><b></b><b></b><b></b><b></b><b></b><b></b>
-          </div>
-          <div class="cake-top"></div>
-          <div class="cake-body"></div>
-        </div>
-        <button class="main-button blow" id="blowButton">BLOW</button>
-        <p class="small-note" id="wishMessage"></p>
-      </div>
-    </section>
+        <section class="screen active" id="screen-passcode">
 
-    <!-- 4. Birthday -->
-    <section class="screen" id="screen-birthday">
-      <div class="center-content birthday-card">
-        <h2>FELIZ CUMPLEAÑOS<br />VIDA MÍA</h2>
-        <div class="cake-illustration">🎂</div>
-        <button class="main-button" id="birthdayNext">NEXT</button>
-      </div>
-    </section>
+            <div class="passcode-container">
 
-    <!-- 5. Final birthday card -->
-    <section class="screen" id="screen-final-card">
-      <div class="final-card">
-        <div class="mini-photos">
-          <img src="assets/photo.jpg" alt="Memory" />
-          <div class="memory">♥</div>
-          <div class="memory memory-two">✦</div>
-          <div class="love-label">LOVE ♥</div>
-        </div>
+                <!-- Photograph -->
+                <div class="photo-container">
 
-        <div class="letter">
-          <div class="stamp">♥</div>
-          <div class="speech">LTe Quiero</div>
-          <p id="letterText">
-            You are the calm I never knew I needed and the warmth I always look for.
-            I just want you to know that I'm really happy with you, and I want to keep
-            choosing you every single day. I love you, more than I ever say out loud.
-          </p>
-          <div class="letter-heart">♥</div>
-        </div>
-      </div>
-      <button class="main-button back-button" id="backButton">BACK</button>
-    </section>
-  </main>
+                    <div class="polaroid">
 
-  <div class="confetti" id="confetti" aria-hidden="true"></div>
-  <script src="script.js"></script>
+                        <img
+                            src="assets/images/foto-principal.jpg"
+                            alt="Nuestro recuerdo"
+                        >
+
+                        <div class="polaroid-caption">
+                            Un pequeño recuerdo ♥
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Passcode -->
+                <div class="login-container">
+
+                    <h1>Ingresa la contraseña</h1>
+
+                    <div class="password-display" id="passwordDisplay">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+
+                    <!-- Keypad -->
+                    <div class="keypad" id="keypad">
+
+                        <button type="button" data-key="1">1</button>
+                        <button type="button" data-key="2">2</button>
+                        <button type="button" data-key="3">3</button>
+
+                        <button type="button" data-key="4">4</button>
+                        <button type="button" data-key="5">5</button>
+                        <button type="button" data-key="6">6</button>
+
+                        <button type="button" data-key="7">7</button>
+                        <button type="button" data-key="8">8</button>
+                        <button type="button" data-key="9">9</button>
+
+                        <button type="button" data-key="clear">*</button>
+                        <button type="button" data-key="0">0</button>
+                        <button type="button" data-key="delete">#</button>
+
+                    </div>
+
+
+                    <!-- Hint -->
+                    <p class="hint">
+                        Pista: Es un día especial
+                    </p>
+
+
+                    <!-- Error -->
+                    <p class="error-message" id="errorMessage"></p>
+
+
+                    <!-- Unlock -->
+                    <button
+                        type="button"
+                        class="next-button hidden"
+                        id="unlockButton"
+                    >
+                        NEXT
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Decorations -->
+            <div class="decoration decoration-bear">
+                🧸
+            </div>
+
+            <div class="decoration decoration-heart">
+                ♥
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SCREEN 2: GIFTS
+        ========================== -->
+
+        <section class="screen" id="screen-gifts">
+
+            <div class="content-container">
+
+                <h2>Mis regalos para ti</h2>
+
+                <p class="subtitle">
+                    Escoge un regalo
+                </p>
+
+
+                <!-- Gifts -->
+                <div class="gifts-container">
+
+                    <button
+                        type="button"
+                        class="gift"
+                        data-gift="1"
+                        aria-label="Regalo número uno"
+                    >
+                        <span>🎁</span>
+                    </button>
+
+                    <button
+                        type="button"
+                        class="gift"
+                        data-gift="2"
+                        aria-label="Regalo número dos"
+                    >
+                        <span>🎁</span>
+                    </button>
+
+                    <button
+                        type="button"
+                        class="gift"
+                        data-gift="3"
+                        aria-label="Regalo número tres"
+                    >
+                        <span>🎁</span>
+                    </button>
+
+                </div>
+
+
+                <p class="instruction">
+                    Haz clic en cualquiera para abrir
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SCREEN 3: MAKE A WISH
+        ========================== -->
+
+        <section class="screen" id="screen-wish">
+
+            <div class="content-container">
+
+                <h2>Make a wish</h2>
+
+
+                <!-- Cake -->
+                <div class="cake-container" id="cake">
+
+
+                    <!-- Flames -->
+                    <div class="flames" id="flames">
+
+                        <span class="flame"></span>
+                        <span class="flame"></span>
+                        <span class="flame"></span>
+                        <span class="flame"></span>
+                        <span class="flame"></span>
+                        <span class="flame"></span>
+                        <span class="flame"></span>
+
+                    </div>
+
+
+                    <!-- Candles -->
+                    <div class="candles">
+
+                        <span class="candle"></span>
+                        <span class="candle"></span>
+                        <span class="candle"></span>
+                        <span class="candle"></span>
+                        <span class="candle"></span>
+                        <span class="candle"></span>
+                        <span class="candle"></span>
+
+                    </div>
+
+
+                    <!-- Cake layers -->
+                    <div class="cake-top"></div>
+                    <div class="cake-bottom"></div>
+
+                </div>
+
+
+                <!-- Blow button -->
+                <button
+                    type="button"
+                    class="action-button"
+                    id="blowButton"
+                >
+                    PIDE UN DESEO
+                </button>
+
+
+                <p id="wishMessage" class="wish-message"></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SCREEN 4: BIRTHDAY
+        ========================== -->
+
+        <section class="screen" id="screen-birthday">
+
+            <div class="content-container birthday-container">
+
+                <h2>
+                    Feliz cumpleaños<br>
+                    mi Valen
+                </h2>
+
+
+                <div class="birthday-illustration">
+                    🎂
+                </div>
+
+
+                <p class="birthday-message">
+                    Te quiero mucho ♥
+                </p>
+
+
+                <button
+                    type="button"
+                    class="action-button"
+                    id="birthdayNext"
+                >
+                    Siguiente
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SCREEN 5: FINAL LETTER
+        ========================== -->
+
+        <section class="screen" id="screen-letter">
+
+            <div class="letter-container">
+
+
+                <!-- Photographs -->
+                <div class="photo-strip">
+
+                    <img
+                        src="assets/images/foto-1.jpg"
+                        alt="Recuerdo 1"
+                    >
+
+                    <img
+                        src="assets/images/foto-2.jpg"
+                        alt="Recuerdo 2"
+                    >
+
+                    <img
+                        src="assets/images/foto-3.jpg"
+                        alt="Recuerdo 3"
+                    >
+
+
+                    <div class="love-label">
+                        LOVE ♥
+                    </div>
+
+                </div>
+
+
+                <!-- Letter -->
+                <div class="letter">
+
+
+                    <div class="letter-stamp">
+                        ♥
+                    </div>
+
+
+                    <div class="letter-title">
+                        Te quiero
+                    </div>
+
+
+                    <p id="letterText">
+
+                        Happy Birthday, mi Valen bella.
+
+                        Espero que tengas un día maravilloso y que disfrutes los pequeños detalles.
+
+                        Te deseo de corazón que este nuevo año de vida llegue con muchísimas cosas lindas para tu vida,
+                        y que puedas disfrutarlas y ser muy feliz.
+
+                        Espero que sigas sonriendo cada vez más,
+                        porque eso es lo más bonito que puedo desear para ti.
+
+                        A pesar de la distancia, quiero enviarte muchos abrazos,
+                        muchos besitos con todo el amor que tengo por ti.
+
+                        Que seas muy feliz hoy y que esa felicidad no se agote.
+
+                        Te quiero mucho. ♥
+
+                    </p>
+
+
+                    <div class="letter-heart">
+                        ♥
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Back button -->
+            <button
+                type="button"
+                class="action-button back-button"
+                id="backButton"
+            >
+                Volver
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="script.js"></script>
+
 </body>
+
 </html>
